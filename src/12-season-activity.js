@@ -32,4 +32,39 @@
  */
 export function getSeasonActivity(month, temperature) {
   // Your code here
+  if (month < 1 || month > 12) return null;
+  var season;
+  //   - December, January, February  (12, 1, 2)   → "Winter"
+  if (month === 1 || month === 12 || month === 2) season = "Winter";
+  //  *   - March, April, May            (3, 4, 5)     → "Spring"
+  else if (month === 3 || month === 4 || month === 5) season = "Spring";
+  //  *   - June, July, August           (6, 7, 8)     → "Summer"
+  else if (month === 6 || month === 7 || month === 8) season = "Summer";
+  //  *   - September, October, November (9, 10, 11)   → "Autumn"
+  else if (month === 9 || month === 10 || month === 11) season = "Autumn";
+
+  //  *   - Winter + temp < 0     → "skiing"
+  if (season === "Winter" && temperature < 0)
+    return { season: "Winter", activity: "skiing" };
+  //  *   - Winter + temp >= 0    → "ice skating"
+  if (season === "Winter" && temperature >= 0)
+    return { season: "Winter", activity: "ice skating" };
+  //  *   - Spring + temp > 20    → "hiking"
+  if (season === "Spring" && temperature > 20)
+    return { season: "Spring", activity: "hiking" };
+  //  *   -   Spring + temp <= 20   → "museum visit"
+  if (season === "Spring" && temperature <= 20)
+    return { season: "Spring", activity: "museum visit" };
+  //  *   - Summer + temp > 35    → "swimming"
+  if (season === "Summer" && temperature > 35)
+    return { season: "Summer", activity: "swimming" };
+  //  *   - Summer + temp <= 35   → "cycling"
+  if (season === "Summer" && temperature <= 35)
+    return { season: "Summer", activity: "cycling" };
+  //  *   - Autumn + temp > 15    → "nature walk"
+  if (season === "Autumn" && temperature > 15)
+    return { season: "Autumn", activity: "nature walk" };
+  //  *   - Autumn + temp <= 15   → "reading at a cafe"
+  if (season === "Autumn" && temperature <= 15)
+    return { season: "Autumn", activity: "reading at a cafe" };
 }
